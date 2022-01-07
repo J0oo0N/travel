@@ -1,186 +1,244 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=chrome" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>회원가입</title>
-	
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	
-	<style>
-	body {
-		min-height: 100vh;
-		background: -webkit-gradient(linear, left bottom, right top, from(#98F979), to(#3FFB02));
-		background: -webkit-linear-gradient(bottom left, #92b5db 0%, #3FFB02 100%);
-		background: -moz-linear-gradient(bottom left, #92b5db 0%, #3FFB02 100%);
-		background: -o-linear-gradient(bottom left, #92b5db 0%, #3FFB02 100%);
-		background: linear-gradient(to top right, #92b5db 0%, #3FFB02 100%);
-	}
-	
-	.input-form {
-		max-width: 780px;
-		margin-top: 80px;
-		padding: 32px;
-		background: #fff;
-		-webkit-border-radius: 10px;
-		-moz-border-radius: 10px;
-		border-radius: 10px;
-		-webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-		-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-		box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
-	}
-	</style>
-	<script>
-		//오류 확인 체크
-		window.addEventListener('load', () => {
-			const forms=document.getElementsByClassName('validation-form');
-	
-			Array.prototype.filter.call(forms, (form) => {
-				form.addEventListener('submit', function (event) {
-					let status = true;
-					if ( !validatePwdCheck() ) {
-						event.preventDefault();
-						event.stopPropagation();
-						status = false;
-					}
-					if (form.checkValidity() === false) {
-						event.preventDefault();
-						event.stopPropagation();
-						status = false;
-					}
-					form.classList.add('was-validated');
-					if(status){
-						event.preventDefault();
-						event.stopPropagation();
-						alert('회원 가입을 성공했습니다.');
-						return;
-					}
-					alert('회원 가입을 실패했습니다')
-				}, false);
-			});
-		}, false);
-		//비밀번호 확인
-		function validatePwdCheck(c){
-			let _c=c ?? document.getElementById('passwordCheck');
-			if (!_c) {
-				return false;
-			}
-			if(document.getElementById("password").value !== document.getElementById("passwordCheck").value) {
-				_c.setCustomValidity('False');
-				return false;
-			}
-			document.getElementById('passwordCheck').setCustomValidity('');
-			return true;
-		}
-	</script>
-	</head>
-	<body>
-		<div class="container">
-			<div class="input-form-backgroud row">
-				<div class="input-form col-md-12 mx-auto">
-					<h4 class="mb-3">회원가입</h4>
-					<form class="validation-form" novalidate="">
-						<!-- 아이디 -->
-						<div class="row">
-							<div class="col-md-12 mb-2">
-								<label for="id">아이디</label> 
-									<input type="text" class="form-control" id="id" placeholder="아이디" value="" required="">
-								<div class="invalid-feedback">아이디를 입력해주세요.</div>
-							</div>
-						</div>
-						<!-- 비밀번호 -->
-						<div class="mb-2">
-							<label for="password">비밀번호</label>
-							<input type="text" class="form-control" id="password" placeholder="비밀번호" max="" required="">
-							<div class="invalid-feedback">
-								비밀번호를 확인해주세요
-							</div>					
-						</div>
-						<!-- 비밀번호  확인-->
-						<div class="mb-2">
-							<label for="passwordCheck">비밀번호확인</label>
-							<input type="text" class="form-control" id="passwordCheck" placeholder="비밀번호확인" oninput="validatePwdCheck(this)" required="">
-							<div class="invalid-feedback">
-								비밀번호를 확인해주세요
-							</div>						
-						</div>
-						<!-- 이름 -->
-						<div class="mb-2">
-							<label for="name2">이름</label>
-							<input type="text" class="form-control" id="name" placeholder="이름" required="">
-							<div class="invalid-feedback">
-								이름 입력해주세요
-							</div>				
-						</div>
-						<!-- 달력 -->
-						<div class="mb-2">
-							<label for="bithdate">생년월일</label><br>
-							<input type="date" class="form-control" id="birthdate" min="1900-01-01" max="2022-01-04" required="">
-							<div class="invalid-feedback">
-								생년월일을 똑바로 입력해주세요
-							</div>					
-						</div>
-						<!-- 핸드폰 번호 줄 맞추기용 -->
-						<div class="mb-2">
-							핸드폰번호
-						</div>
-						<!--  핸드폰 번호 -->
-						<div class="row">
-							<div class="col-md-2 mb-2">
-								<select class="custom-select d-block w-100" id="phone1" required="">
-									<option value=""></option>
-									<option>010</option>
-									<option>012</option>
-									<option>016</option>
-									<option>018</option>
-								</select>
-							<div class="invalid-feedback">핸드폰 번호 앞자리를 선택해 주세요</div>
-							</div>	
-							<div class="col-md-3 mb-2">
-								<input type="text" class="form-control" id="phone2" placeholder="4자리" maxlength="4" required="">
-								<div class="invalid-feedback">4자리를 입력해주세요</div>
-							</div>
-							<div class="col-md-3 mb-2">
-								<input type="text" class="form-control" id="phone3" placeholder="4자리" maxlength="4" required="">
-								<div class="invalid-feedback">4자리를 입력해주세요</div>
-							</div>
-							<div class="col-md-3 mb-2">
-								<button class="btn btn-primary btn-md btn-block" type="button" value="123123">인증번호 전송</button>
-							</div>
-						</div>
-						<!-- 인증번호 확인 -->
-						<div class="row">
-							<div class="col-md-8 mb-2">
-								<input type="text" class="form-control" id="check" placeholder="인증번호를 입력해주세요" maxlength="6" required="">
-							</div>
-							<div class="col-md-3 mb-2">
-								<button class="btn btn-primary btn-md btn-block" type="button">인증번호 확인</button>
-							</div>
-							
-						</div>
-						<!-- 이메일 -->
-						<div class="mb-2">
-							<label for="email">이메일</label> 
-								<input type="email" class="form-control" id="email" placeholder="you@example.com" required="">
-							<div class="invalid-feedback">이메일을 입력해주세요.</div>
-						</div>
-						<!-- 개인정보 수집 동의 -->
-						<hr class="mb-4">
-						<div class="custom-control custom-checkbox">
-							<input type="checkbox" class="custom-control-input" id="aggrement" required=""> 
-							<label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
-						</div>
-						<!-- 가입완료 -->
-						<div class="mb-4"></div>
-							<button class="btn btn-primary btn-lg btn-block" type="submit">가입완료</button>
-					</form>
-				</div>
-			</div>
-			<footer class="my-3 text-center text-small">
-				<p class="mb-1">© 회원가입창</p>
-			</footer>
-		</div>
-	</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>회원가입</title>
+
+        <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous">
+
+        <style>
+            body {
+                min-height: 100vh;
+                background: -webkit-gradient(linear, left bottom, right top, from(#98F979), to(#3FFB02));
+                background: -webkit-linear-gradient(bottom left, #92b5db 0%, #3FFB02 100%);
+                background: -moz-linear-gradient(bottom left, #92b5db 0%, #3FFB02 100%);
+                background: -o-linear-gradient(bottom left, #92b5db 0%, #3FFB02 100%);
+                background: linear-gradient(to top right, #92b5db 0%, #3FFB02 100%);
+            }
+
+            .input-form {
+                max-width: 780px;
+                margin-top: 80px;
+                padding: 32px;
+                background: #fff;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                border-radius: 10px;
+                -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+                -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+                box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            }
+        </style>
+        <script>
+            //오류 확인 체크
+            window.addEventListener('load', () => {
+                const forms = document.getElementsByClassName('validation-form');
+
+                Array
+                    .prototype
+                    .filter
+                    .call(forms, (form) => {
+                        form.addEventListener('submit', function (event) {
+                            let status = true;
+                            if (!validatePwdCheck()) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                status = false;
+                            }
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                status = false;
+                            }
+                            form
+                                .classList
+                                .add('was-validated');
+                            if (status) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                alert('회원 가입을 성공했습니다.');
+                                return;
+                            }
+                            alert('회원 가입을 실패했습니다')
+                        }, false);
+                    });
+            }, false);
+            //비밀번호 확인
+            function validatePwdCheck(c) {
+                let _c = c ?? document.getElementById('passwordCheck');
+                if (!_c) {
+                    return false;
+                }
+                if (document.getElementById("password").value !== document.getElementById("passwordCheck").value) {
+                    _c.setCustomValidity('False');
+                    return false;
+                }
+                document
+                    .getElementById('passwordCheck')
+                    .setCustomValidity('');
+                return true;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="input-form-backgroud row">
+                <div class="input-form col-md-12 mx-auto">
+                    <h4 class="mb-3">회원가입</h4>
+                    <form class="validation-form" novalidate="">
+                        <!-- 아이디 -->
+                        <div class="row">
+                            <div class="col-md-12 mb-2">
+                                <label for="id">아이디</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="id"
+                                    placeholder="아이디"
+                                    value=""
+                                    required="">
+                                <div class="invalid-feedback">아이디를 입력해주세요.</div>
+                            </div>
+                        </div>
+                        <!-- 비밀번호 -->
+                        <div class="mb-2">
+                            <label for="password">비밀번호</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="password"
+                                placeholder="비밀번호"
+                                max=""
+                                required="">
+                            <div class="invalid-feedback">
+                                비밀번호를 확인해주세요
+                            </div>
+                        </div>
+                        <!-- 비밀번호 확인-->
+                        <div class="mb-2">
+                            <label for="passwordCheck">비밀번호확인</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="passwordCheck"
+                                placeholder="비밀번호확인"
+                                oninput="validatePwdCheck(this)"
+                                required="">
+                            <div class="invalid-feedback">
+                                비밀번호를 확인해주세요
+                            </div>
+                        </div>
+                        <!-- 이름 -->
+                        <div class="mb-2">
+                            <label for="name2">이름</label>
+                            <input type="text" class="form-control" id="name" placeholder="이름" required="">
+                            <div class="invalid-feedback">
+                                이름 입력해주세요
+                            </div>
+                        </div>
+                        <!-- 달력 -->
+                        <div class="mb-2">
+                            <label for="bithdate">생년월일</label><br>
+                            <input
+                                type="date"
+                                class="form-control"
+                                id="birthdate"
+                                min="1900-01-01"
+                                max="2022-01-04"
+                                required="">
+                            <div class="invalid-feedback">
+                                생년월일을 똑바로 입력해주세요
+                            </div>
+                        </div>
+                        <!-- 핸드폰 번호 줄 맞추기용 -->
+                        <div class="mb-2">
+                            핸드폰번호
+                        </div>
+                        <!-- 핸드폰 번호 -->
+                        <div class="row">
+                            <div class="col-md-2 mb-2">
+                                <select class="custom-select d-block w-100" id="phone1" required="">
+                                    <option value=""></option>
+                                    <option>010</option>
+                                    <option>012</option>
+                                    <option>016</option>
+                                    <option>018</option>
+                                </select>
+                                <div class="invalid-feedback">핸드폰 번호 앞자리를 선택해 주세요</div>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="phone2"
+                                    placeholder="4자리"
+                                    maxlength="4"
+                                    required="">
+                                <div class="invalid-feedback">4자리를 입력해주세요</div>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="phone3"
+                                    placeholder="4자리"
+                                    maxlength="4"
+                                    required="">
+                                <div class="invalid-feedback">4자리를 입력해주세요</div>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <button class="btn btn-primary btn-md btn-block" type="button" value="123123">인증번호 전송</button>
+                            </div>
+                        </div>
+                        <!-- 인증번호 확인 -->
+                        <div class="row">
+                            <div class="col-md-8 mb-2">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="check"
+                                    placeholder="인증번호를 입력해주세요"
+                                    maxlength="6"
+                                    required="">
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <button class="btn btn-primary btn-md btn-block" type="button">인증번호 확인</button>
+                            </div>
+
+                        </div>
+                        <!-- 이메일 -->
+                        <div class="mb-2">
+                            <label for="email">이메일</label>
+                            <input
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                placeholder="you@example.com"
+                                required="">
+                            <div class="invalid-feedback">이메일을 입력해주세요.</div>
+                        </div>
+                        <!-- 개인정보 수집 동의 -->
+                        <hr class="mb-4">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="aggrement" required="">
+                            <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+                        </div>
+                        <!-- 가입완료 -->
+                        <div class="mb-4"></div>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">가입완료</button>
+                    </form>
+                </div>
+            </div>
+            <footer class="my-3 text-center text-small">
+                <p class="mb-1">© 회원가입창</p>
+            </footer>
+        </div>
+    </body>
 </html>
