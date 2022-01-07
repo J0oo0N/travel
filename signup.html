@@ -12,8 +12,7 @@
 	<style>
 	body {
 		min-height: 100vh;
-		background: -webkit-gradient(linear, left bottom, right top, from(#98F979),
-			to(#3FFB02));
+		background: -webkit-gradient(linear, left bottom, right top, from(#98F979), to(#3FFB02));
 		background: -webkit-linear-gradient(bottom left, #92b5db 0%, #3FFB02 100%);
 		background: -moz-linear-gradient(bottom left, #92b5db 0%, #3FFB02 100%);
 		background: -o-linear-gradient(bottom left, #92b5db 0%, #3FFB02 100%);
@@ -39,7 +38,7 @@
 			const forms=document.getElementsByClassName('validation-form');
 	
 			Array.prototype.filter.call(forms, (form) => {
-				  form.addEventListener('submit', function (event) {
+				form.addEventListener('submit', function (event) {
 					let status = true;
 					if ( !validatePwdCheck() ) {
 						event.preventDefault();
@@ -61,7 +60,7 @@
 					alert('회원 가입을 실패했습니다')
 				}, false);
 			});
-		  }, false);
+		}, false);
 		//비밀번호 확인
 		function validatePwdCheck(c){
 			let _c=c ?? document.getElementById('passwordCheck');
