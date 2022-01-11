@@ -72,16 +72,16 @@
             }, false);
             //비밀번호 확인
             function validatePwdCheck(c) {
-                let _c = c ?? document.getElementById('passwordCheck');
+                let _c = c ?? document.getElementById('user_pwcheck');
                 if (!_c) {
                     return false;
                 }
-                if (document.getElementById("password").value !== document.getElementById("passwordCheck").value) {
+                if (document.getElementById("user_pw").value !== document.getElementById("user_pwcheck").value) {
                     _c.setCustomValidity('False');
                     return false;
                 }
                 document
-                    .getElementById('passwordCheck')
+                    .getElementById('user_pwcheck')
                     .setCustomValidity('');
                 return true;
             }
@@ -96,11 +96,11 @@
                         <!-- 아이디 -->
                         <div class="row">
                             <div class="col-md-12 mb-2">
-                                <label for="id">아이디</label>
+                                <label for="user_id">아이디</label>
                                 <input
                                     type="text"
                                     class="form-control"
-                                    id="id"
+                                    id="user_id"
                                     placeholder="아이디"
                                     value=""
                                     required="">
@@ -109,11 +109,11 @@
                         </div>
                         <!-- 비밀번호 -->
                         <div class="mb-2">
-                            <label for="password">비밀번호</label>
+                            <label for="user_pw">비밀번호</label>
                             <input
                                 type="text"
                                 class="form-control"
-                                id="password"
+                                id="user_pw"
                                 placeholder="비밀번호"
                                 max=""
                                 required="">
@@ -123,11 +123,11 @@
                         </div>
                         <!-- 비밀번호 확인-->
                         <div class="mb-2">
-                            <label for="passwordCheck">비밀번호확인</label>
+                            <label for="user_pwcheck">비밀번호확인</label>
                             <input
                                 type="text"
                                 class="form-control"
-                                id="passwordCheck"
+                                id="user_pwcheck"
                                 placeholder="비밀번호확인"
                                 oninput="validatePwdCheck(this)"
                                 required="">
@@ -137,19 +137,19 @@
                         </div>
                         <!-- 이름 -->
                         <div class="mb-2">
-                            <label for="name2">이름</label>
-                            <input type="text" class="form-control" id="name" placeholder="이름" required="">
+                            <label for="user_name">이름</label>
+                            <input type="text" class="form-control" id="user_name" placeholder="이름" required="">
                             <div class="invalid-feedback">
                                 이름 입력해주세요
                             </div>
                         </div>
                         <!-- 달력 -->
                         <div class="mb-2">
-                            <label for="bithdate">생년월일</label><br>
+                            <label for="user_birth">생년월일</label><br>
                             <input
                                 type="date"
                                 class="form-control"
-                                id="birthdate"
+                                id="user_birth"
                                 min="1900-01-01"
                                 max="2022-01-04"
                                 required="">
@@ -215,11 +215,11 @@
                         </div>
                         <!-- 이메일 -->
                         <div class="mb-2">
-                            <label for="email">이메일</label>
+                            <label for="user_email">이메일</label>
                             <input
                                 type="email"
                                 class="form-control"
-                                id="email"
+                                id="user_email"
                                 placeholder="you@example.com"
                                 required="">
                             <div class="invalid-feedback">이메일을 입력해주세요.</div>
