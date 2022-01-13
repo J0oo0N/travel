@@ -39,6 +39,16 @@
         <script>
             //오류 확인 체크
             window.addEventListener('load', () => {
+                //회원가입 달력 범위 설정
+                const birthdate = document.getElementById('user_birth');
+                
+                if(birthdate) {
+                    const now = new Date();
+                    const date = `${String(now.getMonth()+1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+                    birthdate.max = `${now.getFullYear()}-${date}`
+                    birthdate.min = `${now.getFullYear() - 100}-${date}`
+                }
+                //오류 확인
                 const forms = document.getElementsByClassName('validation-form');
 
                 Array.prototype.filter.call(forms, (form) => {
@@ -145,8 +155,6 @@
                                 type="date"
                                 class="form-control"
                                 id="user_birth"
-                                min="1900-01-01"
-                                max="2022-01-04"
                                 required="">
                             <div class="invalid-feedback">
                                 생년월일을 똑바로 입력해주세요
