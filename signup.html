@@ -159,34 +159,24 @@
                         <!-- 핸드폰 번호 -->
                         <div class="row">
                             <div class="col-md-2 mb-2">
-                                <select class="custom-select d-block w-100" id="phone1" required="">
+                                <select class="custom-select d-block w-100" id="carrier" required="">
                                     <option value=""></option>
-                                    <option>010</option>
-                                    <option>012</option>
-                                    <option>016</option>
-                                    <option>018</option>
+                                    <option>SKT</option>
+                                    <option>KT</option>
+                                    <option>LG U+</option>
+                                    <option>알뜰폰</option>
                                 </select>
-                                <div class="invalid-feedback">핸드폰 번호 앞자리를 선택해 주세요</div>
+                                <div class="invalid-feedback">통신사를 선택해주세요</div>
                             </div>
-                            <div class="col-md-3 mb-2">
+                            <div class="col-md-7 mb-2">
                                 <input
                                     type="text"
                                     class="form-control"
-                                    id="phone2"
-                                    placeholder="4자리"
-                                    maxlength="4"
+                                    id="user_tell"
+                                    placeholder="-를 제외하고 입력해주세요"
+                                    maxlength="11"
                                     required="">
-                                <div class="invalid-feedback">4자리를 입력해주세요</div>
-                            </div>
-                            <div class="col-md-3 mb-2">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="phone3"
-                                    placeholder="4자리"
-                                    maxlength="4"
-                                    required="">
-                                <div class="invalid-feedback">4자리를 입력해주세요</div>
+                                <div class="invalid-feedback">휴대폰 번호를 입력해주세요</div>
                             </div>
                             <div class="col-md-3 mb-2">
                                 <button class="btn btn-primary btn-md btn-block" type="button" value="123123">인증번호 전송</button>
@@ -194,7 +184,7 @@
                         </div>
                         <!-- 인증번호 확인 -->
                         <div class="row">
-                            <div class="col-md-8 mb-2">
+                            <div class="col-md-9 mb-2">
                                 <input
                                     type="text"
                                     class="form-control"
