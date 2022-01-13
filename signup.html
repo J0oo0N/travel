@@ -41,10 +41,7 @@
             window.addEventListener('load', () => {
                 const forms = document.getElementsByClassName('validation-form');
 
-                Array
-                    .prototype
-                    .filter
-                    .call(forms, (form) => {
+                Array.prototype.filter.call(forms, (form) => {
                         form.addEventListener('submit', function (event) {
                             let status = true;
                             if (!validatePwdCheck()) {
@@ -57,9 +54,7 @@
                                 event.stopPropagation();
                                 status = false;
                             }
-                            form
-                                .classList
-                                .add('was-validated');
+                            form.classList.add('was-validated');
                             if (status) {
                                 event.preventDefault();
                                 event.stopPropagation();
@@ -71,9 +66,9 @@
                     });
             }, false);
             //비밀번호 확인
-            function validatePwdCheck(c) {
-                let _c = c ?? document.getElementById('user_pwcheck');
-                if (!_c) {
+            function validatePwdCheck(el) {
+                const _el = el ?? document.getElementById('user_pwcheck');
+                if (!_el) {
                     return false;
                 }
                 if (document.getElementById("user_pw").value !== document.getElementById("user_pwcheck").value) {
