@@ -82,6 +82,7 @@
                         var _val = this.value.trim();
                         this.value = autoHypenPhone(_val);
                     }
+
                 //오류 확인
                 const forms = document.getElementsByClassName('validation-form');
 
@@ -116,7 +117,7 @@
                     return false;
                 }
                 if (document.getElementById("user_pw").value !== document.getElementById("user_pwcheck").value) {
-                    _c.setCustomValidity('False');
+                    _el.setCustomValidity('False');
                     return false;
                 }
                 document
