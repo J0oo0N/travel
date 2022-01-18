@@ -38,8 +38,8 @@
             type="text/css"
             href="vendor/daterangepicker/daterangepicker.css">
 
-        <link rel="stylesheet" type="text/css" href="login_assets/css/util.css">
-        <link rel="stylesheet" type="text/css" href="login_assets/css/main.css">
+        <link rel="stylesheet" type="text/css" href="user_assets/css/util.css">
+        <link rel="stylesheet" type="text/css" href="user_assets/css/main.css">
 
         <meta name="robots" content="noindex, follow">
         <script>
@@ -83,7 +83,7 @@
                 <div class="wrap-login100">
                     <form class="login100-form validate-form p-l-55 p-r-55 p-t-178">
                         <span class="login100-form-title">
-                            행여나
+                            	행여나
                         </span>
                         <div
                             class="wrap-input100 validate-input m-b-16"
@@ -133,7 +133,7 @@
 
         <script src="vendor/countdowntime/countdowntime.js"></script>
 
-        <script src="login_assets/js/main.js"></script>
+        <script src="user_assets/js/main.js"></script>
 
         <script
             async="async"
