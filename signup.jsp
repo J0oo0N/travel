@@ -9,11 +9,7 @@
         <title>signup</title>
 
         <!-- Bootstrap CSS -->
-        <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="signupstyle.css">
 
         <style>
             body {
@@ -148,7 +144,7 @@
                                 <div class="invalid-feedback">휴대폰 번호를 입력해주세요</div>
                             </div>
                             <div class="col-md-3 mb-2">
-                                <button style="background-color: #69bb7e;" class="btn btn #e8e8e8 btn-md btn-block" type="submit"><span style="color: #fff">인증번호 전송</span></button>
+                                <button class="btn btn-primary btn-md btn-block" type="button">인증번호 전송</button>
                             </div>
                         </div>
                         <!-- 인증번호 확인 -->
@@ -162,8 +158,8 @@
                                     maxlength="6"
                                     required="">
                             </div>
-                               <div class="col-md-3 mb-2">
-                                <button style="background-color: #69bb7e;" class="btn btn #e8e8e8 btn-md btn-block" type="submit"><span style="color: #fff">인증번호 전송</span></button>
+                                <div class="col-md-3 mb-2">
+                                    <button class="btn btn-primary btn-md btn-block" type="button">인증번호 확인</button>
                             </div>
 
                         </div>
@@ -187,7 +183,7 @@
                         </div>
                         <!-- 가입완료 -->
                         <div class="mb-4"></div>
-                       <button style="background-color: #69bb7e;" class="btn btn #e8e8e8 btn-md btn-block" type="submit"><span style="color: #fff">가입완료</span></button>
+                        <button class="btn btn-primary btn-md btn-block" type="submit">가입완료</button>
                     </form>
                 </div>
             </div>
