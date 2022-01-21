@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,7 +9,7 @@
         <title>signup</title>
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" type="text/css" href="signupstyle.css">
+        <link rel="stylesheet" type="text/css" href="user_assets/css/signupstyle.css">
 
         <style>
             body {
@@ -28,102 +30,30 @@
                 box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
             }
         </style>
+        <script src = "user_assets/js/signupcheck.js"></script>
         <script>
-            //오류 확인 체크
-            window.addEventListener('load', () => {
-                //회원가입 달력 범위 설정
-                const birthdate = document.getElementById('user_birth');
-                
-                if(birthdate) {
-                    const now = new Date();
-                    const date = `${String(now.getMonth()+1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-                    birthdate.max = `${now.getFullYear()}-${date}`
-                    birthdate.min = `${now.getFullYear() - 100}-${date}`
-                }
-                //핸드폰 번호 자동 하이픈(-) 설정, 숫자만 써지게 하기
-                function autoHypenPhone(str) {
-                    str = str.replace(/[^0-9]/g, '');
-                    var tmp = '';
-                    if (str.length < 4) {
-                        return str;
-                    } else if (str.length < 7) {
-                        tmp += str.substr(0, 3);
-                        tmp += '-';
-                        tmp += str.substr(3);
-                        return tmp;
-                    } else if (str.length < 11) {
-                        tmp += str.substr(0, 3);
-                        tmp += '-';
-                        tmp += str.substr(3, 3);
-                        tmp += '-';
-                        tmp += str.substr(6);
-                        return tmp;
-                    } else {
-                        tmp += str.substr(0, 3);
-                        tmp += '-';
-                        tmp += str.substr(3, 4);
-                        tmp += '-';
-                        tmp += str.substr(7);
-                        return tmp;
-                    }
-                    return str;
-                }
-                var user_tell = document.getElementById('user_tell');
-                    user_tell.onkeyup = function (event) {
-                        event = event || window.event;
-                        var _val = this.value.trim();
-                        this.value = autoHypenPhone(_val);
-                    }
-
-                //오류 확인
-                const forms = document.getElementsByClassName('validation-form');
-
-                Array.prototype.filter.call(forms, (form) => {
-                        form.addEventListener('submit', function (event) {
-                            let status = true;
-                            if (!validatePwdCheck()) {
-                                event.preventDefault();
-                                event.stopPropagation();
-                                status = false;
-                            }
-                            if (form.checkValidity() === false) {
-                                event.preventDefault();
-                                event.stopPropagation();
-                                status = false;
-                            }
-                            form.classList.add('was-validated');
-                            if (status) {
-                                event.preventDefault();
-                                event.stopPropagation();
-                                alert('회원 가입을 성공했습니다.');
-                                return;
-                            }
-                            alert('회원 가입을 실패했습니다')
-                        }, false);
-                    });
-            }, false);
-            //비밀번호 확인
-            function validatePwdCheck(el) {
-                const _el = el ?? document.getElementById('user_pwcheck');
-                if (!_el) {
-                    return false;
-                }
-                if (document.getElementById("user_pw").value !== document.getElementById("user_pwcheck").value) {
-                    _el.setCustomValidity('False');
-                    return false;
-                }
-                document
-                    .getElementById('user_pwcheck')
-                    .setCustomValidity('');
-                return true;
+        //비밀번호 확인
+        function validatePwdCheck(el) {
+            const _el = el ?? document.getElementById('user_pwcheck');
+            if (!_el) {
+                return false;
             }
+            if (document.getElementById("user_pw").value !== document.getElementById("user_pwcheck").value) {
+                _el.setCustomValidity('False');
+                return false;
+            }
+            document
+                .getElementById('user_pwcheck')
+                .setCustomValidity('');
+            return true;
+        }
         </script>
     </head>
     <body>
         <div class="container">
             <div class="input-form-backgroud row">
                 <div class="input-form col-md-12 mx-auto">
-                    <h2 style="color: #68bb7d;" class="mb-3">회원가입</h2>
+                    <h2 style="color: #68bb7d;" class="mb-3">내 정보</h2>
                     <form class="validation-form" novalidate="">
                         <!-- 아이디 -->
                         <div class="row">
@@ -142,13 +72,20 @@
                         <!-- 비밀번호 -->
                         <div class="mb-2">
                             <label for="user_pw">비밀번호</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="user_pw"
-                                placeholder="비밀번호"
-                                max=""
-                                required="">
+                                <div class="row">
+                            <div class="col-md-9 mb-2">                            
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="user_pw"
+                                    placeholder="비밀번호"
+                                    max=""
+                                    required="">
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <button class="btn btn-primary btn-md btn-block" type="button">수정</button>
+                            </div>
+                                
                             <div class="invalid-feedback">
                                 비밀번호를 확인해주세요
                             </div>
@@ -170,19 +107,40 @@
                         <!-- 이름 -->
                         <div class="mb-2">
                             <label for="user_name">이름</label>
-                            <input type="text" class="form-control" id="user_name" placeholder="이름" required="">
+                            <div class="row">
+                                <div class="col-md-9 mb-2">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="user_name"
+                                        placeholder="이름"
+                                        max=""
+                                        required="">
+                                </div>
+                            <div class="col-md-3 mb-2">
+                                <button class="btn btn-primary btn-md btn-block" type="button">수정</button>
+                            </div>
                             <div class="invalid-feedback">
                                 이름 입력해주세요
-                            </div>
+                            </div>                            
                         </div>
                         <!-- 달력 -->
                         <div class="mb-2">
                             <label for="user_birth">생년월일</label><br>
-                            <input
-                                type="date"
-                                class="form-control"
-                                id="user_birth"
-                                required="">
+                            
+                            <div class="row">
+                                <div class="col-md-9 mb-2">
+                                    <input
+                                        type="date"
+                                    class="form-control"
+                                    id="user_birth"
+                                    placeholder="이름"
+                                    max=""
+                                    required="">
+                                </div>
+                            <div class="col-md-3 mb-2">
+                                <button class="btn btn-primary btn-md btn-block" type="button">수정</button>
+                            </div>
                             <div class="invalid-feedback">
                                 생년월일을 똑바로 입력해주세요
                             </div>
@@ -228,37 +186,43 @@
                                     maxlength="6"
                                     required="">
                             </div>
-                                <div class="col-md-3 mb-2">
-                                    <button class="btn btn-primary btn-md btn-block" type="button">인증번호 확인</button>
+                            <div class="col-md-3 mb-2">
+                                <button class="btn btn-primary btn-md btn-block" type="button">인증번호 확인</button>
                             </div>
-
                         </div>
                         <!-- 이메일 -->
                         <div class="mb-2">
                             <label for="user_email">이메일</label>
-                            <input
-                                type="email"
-                                class="form-control"
-                                id="user_email"
-                                placeholder="you@example.com"
-                                required="">
-                            <div class="invalid-feedback">이메일을 입력해주세요.</div>
+							<div class="row">
+                            <div class="col-md-9 mb-2">
+                            
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="user_email"
+                                    placeholder="you@example.com"
+                                    max=""
+                                    required="">
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <button class="btn btn-primary btn-md btn-block" type="button">수정</button>
+                            </div>
+                                
                         </div>
-                    
-                        <!-- 개인정보 수집 동의 -->
-                        <hr class="mb-4">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="aggrement" required="">
-                            <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+                        <!-- 수정완료와 회원탈퇴 -->
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <button class="btn btn-primary btn-md btn-block" type="submit">수정완료</button>
                         </div>
-                        <!-- 가입완료 -->
-                        <div class="mb-4"></div>
-                        <button class="btn btn-primary btn-md btn-block" type="submit">가입완료</button>
+                            <div class="col-md-6 mb-4">
+                                <button class="btn btn-primary btn-md btn-block" type="submit">회원탈퇴</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
             <footer class="my-3 text-center text-small">
-                <p class="mb-1">©signup</p>
+                <p class="mb-1">©mypage_user</p>
             </footer>
         </div>
     </body>
