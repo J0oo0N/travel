@@ -14,8 +14,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*) FROM USER_INFO WHERE USER_ID = #{user_id} AND USER_PW = #{user_pw} and USER_ACTIVATE = 1
 	</select>
 	
-	<update id="delete" parameterType="int">
-	UPDATE USER_INFO SET USER_ACTIVATE = 0 WHERE USER_INDEX = ${value}
+	<update id="delete" parameterType="_int">
+		UPDATE USER_INFO SET USER_ACTIVATE = 0 WHERE USER_INDEX = ${user_index}
 	</update>
 	
 	<select id="select" parameterType="String" resultType="userinfodto">
@@ -25,5 +25,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="update" parameterType="userinfodto">
 		UPDATE USER_INFO SET USER_PW = '${user_pw}', USER_NAME = '${user_name}', USER_BIRTH = '${user_birth}', USER_TELL = '${user_tell}', USER_EMAIL = '${user_email}' WHERE user_id = '${user_id}'
 	</update>
+	
+	<select id="getUser_index" parameterType="string" resultType="_int">
+		SELECT USER_INDEX FROM USER_INFO ui WHERE USER_ID = #{user_id}
+	</select>
 	
 </mapper>

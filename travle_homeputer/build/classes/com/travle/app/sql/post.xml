@@ -12,7 +12,7 @@
 		select * from POST where postId = #{postId}
 	</select>
 	<insert id="insertPost" parameterType="postdto">
-		INSERT INTO POST VALUES (seq_post_postId.nextval, #{postTitle}, #{postContent}, sysdate, 0, 1) <!-- userIndex컬럼 로그인한 사용자 번호 받기 -->
+		INSERT INTO POST VALUES (seq_post_postId.nextval, #{postTitle}, #{postContent}, sysdate, 0, #{userIndex}) <!-- userIndex컬럼 로그인한 사용자 번호 받기 -->
 	</insert>
 	<update id="updatePost" parameterType="postdto">
 		UPDATE POST SET POSTTITLE = #{postTitle} , POSTCONTENT = #{postContent} WHERE POSTID = #{postId}

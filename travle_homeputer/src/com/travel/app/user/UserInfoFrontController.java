@@ -40,8 +40,9 @@ public class UserInfoFrontController extends HttpServlet{
 		} else if(requestURI.equals("/user/update.us")) {
 			System.out.println("update");
 			forward = new UserUpdateAction().execute(req, resp);
+		} else if(requestURI.equals("/user/UserLogOut.us")) {
+			forward = new UserLogoutAction().execute(req, resp);
 		}
-		
 		if(forward != null) {
 			if(forward.isRedirect()) {
 				resp.sendRedirect(forward.getPath());

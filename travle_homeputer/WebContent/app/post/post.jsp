@@ -41,6 +41,7 @@
 	
 	<c:set var="postList" value="${requestScope.postList }"/>
 	<c:set var="totalCnt" value="${requestScope.totalCnt }"/>
+	<c:set var="loginStat" value="${sessionScope.loginStat}"/>
 	
 	<div class="container py-5">
 		<div class="row">
@@ -127,9 +128,16 @@
 							</c:if>
 						</ul>
 					</nav>
-				</div>	
+				</div>
 				<div class="text-end mt-2">
-				<a class="btn btn-success btn-lg px-3" href="${pageContext.request.contextPath }/post/postEdit.do">글쓰기</a>
+					<c:choose>
+						<c:when test="${loginStat == 1 }">
+							<a class="btn btn-success btn-lg px-3" href="${pageContext.request.contextPath }/post/postEdit.do">글쓰기</a>
+						</c:when>
+						<c:otherwise>
+							<p></p>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>
@@ -147,5 +155,12 @@
 	</div>
 	
 	<jsp:include page="/footer.jsp"/>
+	    <!-- Start Script -->
+    <script src="/assets/js/jquery-1.11.0.min.js"></script>
+    <script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/templatemo.js"></script>
+    <script src="/assets/js/custom.js"></script>
+    <!-- End Script -->
 </body>
 </html>

@@ -9,7 +9,7 @@
         <title>signup</title>
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" type="text/css" href="userinfo_assets/css/signupstyle.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/signupstyle.css">
 
         <style>
             body {
@@ -30,7 +30,7 @@
                 box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
             }
         </style>
-        <script src = "userinfo_assets/js/signupcheck.js"></script>
+        <script src = "/assets/js/signupcheck.js"></script>
         <script>
         //비밀번호 확인
         function validatePwdCheck(el) {

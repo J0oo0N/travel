@@ -30,8 +30,8 @@
 <link rel="stylesheet" type="text/css"
 	href="vendor/daterangepicker/daterangepicker.css">
 
-<link rel="stylesheet" type="text/css" href="userinfo_assets/css/util.css">
-<link rel="stylesheet" type="text/css" href="userinfo_assets/css/main.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/util.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
 
 <meta name="robots" content="noindex, follow">
 <script>(function(w,d){!function(e,t,r,a,s){e[r]=e[r]||{},e[r].executed=[],e.zaraz={deferred:[]};var n=t.getElementsByTagName("title")[0];e[r].c=t.cookie,n&&(e[r].t=t.getElementsByTagName("title")[0].text),e[r].w=e.screen.width,e[r].h=e.screen.height,e[r].j=e.innerHeight,e[r].e=e.innerWidth,e[r].l=e.location.href,e[r].r=t.referrer,e[r].k=e.screen.colorDepth,e[r].n=t.characterSet,e[r].o=(new Date).getTimezoneOffset(),//
@@ -42,7 +42,7 @@ e[s]=e[s]||[],e.zaraz._preTrack=[],e.zaraz.track=(t,r)=>e.zaraz._preTrack.push([
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form p-l-55 p-r-55 p-t-178" action="${pageContext.request.contextPath }/user/UserLoginOK.us" method="post">
-					<span class="login100-form-title"> 행여나2 </span>
+					<span class="login100-form-title"> 행여나 </span>
 					<div class="wrap-input100 validate-input m-b-16"
 						data-validate="Please enter username">
 						<input class="input100" type="text" name="user_id"
@@ -83,7 +83,7 @@ e[s]=e[s]||[],e.zaraz._preTrack=[],e.zaraz.track=(t,r)=>e.zaraz._preTrack.push([
 
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 
-	<script src="userinfo_assets/js/main.js"></script>
+	<script src="/assets/js/main.js"></script>
 
 	<script async
 		src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>

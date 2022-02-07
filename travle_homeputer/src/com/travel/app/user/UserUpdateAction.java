@@ -30,8 +30,10 @@ public class UserUpdateAction implements Action{
 		user.setUser_email(request.getParameter("user_email"));
 		
 		if(udao.userUpdate(user)) {
-			forward.setPath(request.getContextPath() + "/userinfo/index.jsp");
-			forward.setRedirect(false);
+			forward.setRedirect(true);
+			System.out.println(forward.getPath());
+			forward.setPath(request.getContextPath() + "/");
+			System.out.println(forward.getPath());
 		}
 		return forward;
 		

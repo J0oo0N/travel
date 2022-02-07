@@ -1,33 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>행여나_header</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/templatemo.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
-
-    <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-<!--
-    
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
-
--->
-</head>
-<body>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>  
 	<!-- Header -->
+		
     <nav class="navbar navbar-expand-lg navbar-light shadow">
+    
+    	<c:set var="loginStat" value="${sessionScope.loginStat}"/>
+    
         <div class="container d-flex justify-content-between align-items-center">
 			<!--  로고 클릭시 index 이동 -->
             <a class="navbar-brand text-success logo h1 align-self-center" href="/">
@@ -49,39 +30,44 @@ https://templatemo.com/tm-559-zay-shop
                         	<!-- post 페이지 이동 -->
                             <a class="nav-link" href="/post/post.do">게시글</a>
                         </li>
-                        <li class="nav-item">
-                        	<!-- mypage 페이지 이동 -->
-                            <a class="nav-link" href="/app/userinfo/mypage_user.jsp">마이페이지</a>
+                         <li class="nav-item">
+                       	<!-- post 페이지 이동 -->
+                            <a class="nav-link" href="#">찜하기</a>
                         </li>
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                    <!--div class="d-lg-none flex-sm-fill mt-3 mb-4 col-12 pr-3">
                         <div class="input-group">
                             <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
                             <div class="input-group-text">
                                 <i class="fa fa-fw fa-search"></i>
                             </div>
                         </div>
-                    </div>
-                    <a class="nav-icon position-relative text-decoration-none" href="/app/userinfo/login.jsp">
-                    	<!-- 로그인 페이지 이동 -->
-                        <!-- 로그인하면 사용자 이름 표시 -->
-                        <!-- 사용자 이름 클릭하면 로그아웃 표시 -->
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                    </a>
+                    </div-->
+   					<c:choose>
+                    <c:when test="${loginStat == 1 }">
+                    <a class ="nav-icon position-relative text-decoration-none" href="/app/userinfo/mypage_user.jsp">
+                    		<i class="fa fa-fw fa-user text-dark mr-3"></i>
+                    		마이페이지
+                    	</a>
+                    	<a class ="nav-icon position-relative text-decoration-none" href="/user/UserLogOut.us">
+                    		<i class="fa fa-fw fa-sign-out-alt text-dark mr-3"></i>
+                    		로그아웃
+                    	</a>
+                    </c:when>
+                    <c:otherwise>
+                    	<a class="nav-icon position-relative text-decoration-none" href="/app/userinfo/login.jsp">
+                        	<i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        	로그인
+                    	</a>
+                    </c:otherwise>
+                    </c:choose>
+
+                    
                 </div>
             </div>
 
         </div>
     </nav>
     <!-- Close Header -->
-    <!-- Start Script -->
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <!-- End Script -->
-</body>
-</html>

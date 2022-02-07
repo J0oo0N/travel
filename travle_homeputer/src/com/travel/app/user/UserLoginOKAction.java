@@ -20,7 +20,12 @@ public class UserLoginOKAction implements Action{
 		if(udao.login(user_id, user_pw)) {
 			//로그인 성공
 			HttpSession session = request.getSession();
+			int user_index = udao.getUser_index(user_id);
+			int loginStat = 1;
+			System.out.println(user_index);
 			session.setAttribute("id", user_id);
+			session.setAttribute("user_index", user_index);
+			session.setAttribute("loginStat", loginStat);
 			forward.setRedirect(true);
 			forward.setPath(request.getContextPath() + "/");
 //			forward.setRedirect(false);

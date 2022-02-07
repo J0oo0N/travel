@@ -52,9 +52,9 @@ public class UserInfoDAO {
 		return result;
 	}
 	//회원 조희
-	public UserInfoDTO getByID(String id) {
+	public UserInfoDTO getByid(String userid) {
 		UserInfoDTO dto = null;
-		dto = sqlsession.selectOne("User.select", id);
+		dto = sqlsession.selectOne("User.select", userid);
 		return dto;
 	}
 	//회원 수정
@@ -65,6 +65,10 @@ public class UserInfoDAO {
 			result = true;
 		}
 		return result;
+	}
+
+	public int getUser_index(String user_id) {
+		return (Integer)sqlsession.selectOne("User.getUser_index", user_id);
 	}
 
 }

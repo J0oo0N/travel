@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 </head>
 <body>
-    <jsp:include page="/header.jsp"></jsp:include>
+    <jsp:include page="/header.jsp"/>
 
     <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
